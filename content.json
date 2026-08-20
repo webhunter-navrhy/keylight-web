@@ -1,0 +1,90 @@
+{
+  "meta": {
+    "period": "červenec–srpen 2026",
+    "lastUpdated": "2026-08-19"
+  },
+  "stats": {
+    "viewsTotal": "175 000+",
+    "ig_views": "133 180",
+    "ig_reach": "51 493",
+    "ig_interactions": "5 581",
+    "ig_nonFollowerReach": "90,7 %",
+    "yt_views": "41 614",
+    "yt_watchTime": "367 hodin",
+    "live_attendance": "150 diváků",
+    "live_note": "vyprodáno"
+  },
+  "demographics": {
+    "instagram": {
+      "gender": "59 % muži / 41 % ženy",
+      "age": "18–34 let (63 %)",
+      "device": "převážně mobil"
+    },
+    "youtube": {
+      "gender": "88 % muži / 12 % ženy",
+      "age": "25–54 let (70 %)",
+      "device": "62 % mobil, 6,5 % TV"
+    }
+  },
+  "shows": [
+    {
+      "id": "o-vsechno",
+      "title": "O VŠECHNO",
+      "subtitle": "Stand-up & impro show",
+      "description": "Stand-up a improvizační show natáčená před živým publikem. Šest profesionálních komiků soutěží o titul nejvtipnějšího večera. První a poslední soutěžní kolo mají připravené předem, druhé kolo je založené na improvizaci. O vítězi rozhodují diváci společně se speciálním hostem z řad známých osobností. Pořad vychází na YouTube. Poslední natáčení bylo zcela vyprodané.",
+      "platforms": ["YouTube"],
+      "youtubeEmbed": "https://www.youtube.com/embed/YOUR_VIDEO_ID"
+    },
+    {
+      "id": "mas-to-spocitany",
+      "title": "MÁŠ TO SPOČÍTANÝ",
+      "subtitle": "Talk show",
+      "description": "Talk show určená pro YouTube. Host přichází za dvojicí moderátorů. Gabriela (Najdibalanc) se dlouhodobě věnuje numerologii a tarotovým kartám, zatímco Lukáš zastupuje pohled založený na logice a selském rozumu. Premiéra prvního dílu proběhla 28. 8. 2026 na YouTube.",
+      "platforms": ["YouTube"],
+      "youtubeEmbed": ""
+    },
+    {
+      "id": "standup-na-ulici",
+      "title": "STAND-UP NA ULICI",
+      "subtitle": "Krátký formát",
+      "description": "Krátký formát pro sociální sítě. Profesionální komici vystupují přímo v ulicích Prahy před náhodnými kolemjdoucími. O místě a čase natáčení informujeme na Instagramu. Pořad vychází ve formě krátkých vertikálních videí.",
+      "platforms": ["Instagram", "TikTok"],
+      "youtubeEmbed": ""
+    }
+  ],
+  "collaboration": [
+    {
+      "title": "Branded video",
+      "description": "Scénář, natáčení s komikem, střih a publikace na našich kanálech."
+    },
+    {
+      "title": "Produktové umístění v epizodě",
+      "description": "Umístění v dílu, zmínka moderátorem, krátká videa z natáčení."
+    },
+    {
+      "title": "Branded segment v pořadu",
+      "description": "Značka se stane součástí formátu, například vlastní soutěžní kolo."
+    },
+    {
+      "title": "Partner živé show",
+      "description": "Logo na scéně a plátně, zmínka moderátorem, sampling, foto a video z akce."
+    },
+    {
+      "title": "Video na míru pro kanály klienta",
+      "description": "Samostatná produkce bez distribuce na našich kanálech."
+    }
+  ],
+  "contact": {
+    "email": "info@klight.cz",
+    "phone": "+420 770 600 252",
+    "ico": "17284007",
+    "social": {
+      "instagram": "https://instagram.com/keylight_cz",
+      "tiktok": "https://tiktok.com/@keylight_cz",
+      "youtube": "https://youtube.com/@KEYLIGHT_CZ"
+    }
+  },
+  "admin": {
+    "passwordHash": ""
+  }
+}
