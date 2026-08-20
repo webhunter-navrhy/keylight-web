@@ -42,24 +42,31 @@
   });
 
   /* ---------- Relight Interactive Element ---------- */
-  var relightSlider = document.getElementById('relightSlider');
-  var relightLight = document.getElementById('relightLight');
-  var relightValue = document.getElementById('relightValue');
+  var keySlider = document.getElementById('keySlider');
+  var backSlider = document.getElementById('backSlider');
+  var relightKey = document.getElementById('relightKey');
+  var relightBack = document.getElementById('relightBack');
+  var keyValue = document.getElementById('keyValue');
+  var backValue = document.getElementById('backValue');
   var relightWrapper = document.getElementById('relightWrapper');
   var relightAnimated = false;
 
-  function updateRelight(value) {
-    var pct = value / 100;
-    relightLight.style.opacity = pct;
-    relightValue.textContent = value + ' %';
+  function padNum(n) { return String(n).padStart(3, '0'); }
+
+  function updateKey(value) {
+    relightKey.style.opacity = value / 100;
+    keyValue.textContent = padNum(value);
   }
 
-  if (relightSlider) {
-    relightSlider.addEventListener('input', function () {
-      updateRelight(parseInt(this.value, 10));
-    });
+  function updateBack(value) {
+    relightBack.style.opacity = value / 100;
+    backValue.textContent = padNum(value);
+  }
 
-    // Auto-animate when entering viewport
+  if (keySlider) {
+    keySlider.addEventListener('input', function () { updateKey(parseInt(this.value, 10)); });
+    backSlider.addEventListener('input', function () { updateBack(parseInt(this.value, 10)); });
+
     var relightObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting && !relightAnimated) {
@@ -74,32 +81,32 @@
   }
 
   function animateRelight() {
-    var start = 20;
-    var peak = 100;
-    var duration = 1500;
+    var duration = 1800;
     var startTime = null;
 
     function step(timestamp) {
       if (!startTime) startTime = timestamp;
-      var elapsed = timestamp - startTime;
-      var progress = Math.min(elapsed / duration, 1);
-      var value;
+      var progress = Math.min((timestamp - startTime) / duration, 1);
 
+      // Key light: 20 → 100 → 20
+      var keyVal, backVal;
       if (progress < 0.5) {
-        // Go up
-        value = start + (peak - start) * (progress * 2);
+        keyVal = 20 + 80 * (progress * 2);
+        backVal = 15 + 85 * Math.max(0, (progress - 0.15) * 2.86);
       } else {
-        // Come back down
-        value = peak - (peak - start) * ((progress - 0.5) * 2);
+        keyVal = 100 - 80 * ((progress - 0.5) * 2);
+        backVal = 100 - 85 * ((progress - 0.5) * 2);
       }
 
-      value = Math.round(value);
-      relightSlider.value = value;
-      updateRelight(value);
+      keyVal = Math.round(Math.min(keyVal, 100));
+      backVal = Math.round(Math.max(Math.min(backVal, 100), 15));
 
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      }
+      keySlider.value = keyVal;
+      backSlider.value = backVal;
+      updateKey(keyVal);
+      updateBack(backVal);
+
+      if (progress < 1) requestAnimationFrame(step);
     }
 
     requestAnimationFrame(step);
@@ -368,6 +375,48 @@
 
   document.querySelectorAll('iframe[data-src]').forEach(function (iframe) {
     iframeObserver.observe(iframe);
+  });
+
+  /* ---------- Lightbox ---------- */
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightboxImg');
+  var lightboxClose = document.getElementById('lightboxClose');
+
+  function openLightbox(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    lightbox.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('show');
+    document.body.style.overflow = '';
+    lightboxImg.src = '';
+  }
+
+  if (lightbox) {
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && lightbox.classList.contains('show')) closeLightbox();
+    });
+  }
+
+  // Team gallery photos — click to open lightbox
+  document.querySelectorAll('.team-gallery img').forEach(function (img) {
+    img.addEventListener('click', function () {
+      openLightbox(this.src, this.alt);
+    });
+  });
+
+  // Show gallery photos — click to open lightbox
+  document.querySelectorAll('.show-gallery img').forEach(function (img) {
+    img.addEventListener('click', function () {
+      openLightbox(this.src, this.alt);
+    });
   });
 
   /* ---------- Smooth scroll for anchor links ---------- */

@@ -96,18 +96,30 @@
           <p>Všechny naše pořady spojuje pozitivní energie a dobrá nálada. Chceme vytvářet obsah, u kterého se lidé usmívají a odcházejí s lepší náladou.</p>
         </div>
         <div class="relight-wrapper" id="relightWrapper">
-          <img src="images/relight/light-full.jpg" alt="Tým KEYLIGHT na scéně" class="relight-dark" id="relightDark">
-          <img src="images/relight/light-full.jpg" alt="Tým KEYLIGHT nasvíceno" class="relight-light" id="relightLight">
+          <img src="images/relight/source.jpg" alt="Tým KEYLIGHT na scéně" class="relight-dark">
+          <img src="images/relight/source.jpg" alt="Key light — nasvícení lidí" class="relight-key" id="relightKey">
+          <img src="images/relight/source.jpg" alt="Back light — nasvícení pozadí" class="relight-back" id="relightBack">
           <div class="relight-controls">
-            <div class="relight-label">
-              <span>KEY LIGHT</span>
-              <span id="relightValue">20 %</span>
+            <div class="relight-faders">
+              <div class="relight-fader">
+                <div class="relight-fader-header">
+                  <span>Key</span>
+                  <span class="fader-value" id="keyValue">020</span>
+                </div>
+                <input type="range" class="relight-slider" id="keySlider" min="0" max="100" value="20" aria-label="Key light — hlavní světlo na lidi">
+              </div>
+              <div class="relight-fader">
+                <div class="relight-fader-header">
+                  <span>Back</span>
+                  <span class="fader-value" id="backValue">015</span>
+                </div>
+                <input type="range" class="relight-slider" id="backSlider" min="0" max="100" value="15" aria-label="Back light — světlo na pozadí a logo">
+              </div>
             </div>
-            <input type="range" class="relight-slider" id="relightSlider" min="0" max="100" value="20" aria-label="Key light intensity">
           </div>
         </div>
       </div>
-      <p class="reveal" style="margin-top:1.5rem;text-align:center;color:#888;font-size:.9rem;">Posuňte slider a nasvítíte naši fotografii. <em>Key light</em> — hlavní světlo, které definuje tvar — je důvod, proč se tak jmenujeme.</p>
+      <p class="reveal" style="margin-top:1.5rem;text-align:center;color:#888;font-size:.9rem;">Posuňte fadery a nasvítíte naši fotografii. <em>Key light</em> — hlavní světlo na lidi. <em>Back light</em> — světlo na pozadí a logo.</p>
     </div>
   </section>
 
@@ -216,16 +228,12 @@
             <p>Profesionální komici v ulicích Prahy. Krátká vertikální videa pro sociální sítě.</p>
           </div>
         </a>
-        <div class="show-card coming-soon">
-          <div class="show-card-image" style="align-items:center;justify-content:center;">
-            <span style="font-family:var(--font-heading);font-size:3rem;font-weight:900;color:rgba(255,255,255,.3);">?</span>
-          </div>
-          <div class="show-card-body">
-            <h3>Připravujeme</h3>
-            <div class="show-subtitle">Nový formát</div>
-            <p>Další pořad je v přípravě. Chcete být u toho od začátku?</p>
-          </div>
-        </div>
+      </div>
+      <div class="show-coming-soon reveal">
+        <h3>Připravujeme další pořad</h3>
+        <div class="show-subtitle">Nový formát je v přípravě</div>
+        <p>Chcete být u toho od začátku? Ozvěte se nám a probereme možnosti spolupráce.</p>
+        <a href="#kontakt" class="btn btn-outline">Ozvěte se nám</a>
       </div>
 
       <!-- Show Details -->
@@ -243,6 +251,13 @@
             <iframe src="about:blank" data-src="https://www.youtube.com/embed/" title="O VŠECHNO" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
+        <div class="show-gallery">
+          <img src="images/fotogalerie/akce-1.jpg" alt="O Všechno — foto 1" loading="lazy">
+          <img src="images/fotogalerie/akce-2.jpg" alt="O Všechno — foto 2" loading="lazy">
+          <img src="images/fotogalerie/akce-3.jpg" alt="O Všechno — foto 3" loading="lazy">
+          <img src="images/fotogalerie/akce-4.jpg" alt="O Všechno — foto 4" loading="lazy">
+          <img src="images/fotogalerie/akce-5.jpg" alt="O Všechno — foto 5" loading="lazy">
+        </div>
       </div>
 
       <div class="show-detail reveal" id="detail-mas-to-spocitany">
@@ -257,6 +272,10 @@
           <div class="show-detail-video">
             <iframe src="about:blank" data-src="" title="MÁŠ TO SPOČÍTANÝ" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
+        </div>
+        <div class="show-gallery">
+          <img src="images/fotogalerie/mts-1.jpg" alt="Máš to spočítaný — foto 1" loading="lazy">
+          <img src="images/fotogalerie/mts-2.jpg" alt="Máš to spočítaný — foto 2" loading="lazy">
         </div>
       </div>
 
@@ -300,7 +319,12 @@
   <section class="section" id="klienti" style="padding-top:2rem;padding-bottom:2rem;">
     <div class="container">
       <div class="section-header reveal"><span class="section-label">Spolupracovali jsme s</span></div>
-      <div class="clients-strip reveal"><p style="color:#999;font-size:.9rem;font-style:italic;">Loga partnerů budou doplněna.</p></div>
+      <div class="clients-strip reveal">
+        <span class="logo-on-dark"><img src="images/logo/client-1.png" alt="Partner" loading="lazy"></span>
+        <img src="images/logo/client-2.png" alt="MailBakers" loading="lazy">
+        <img src="images/logo/client-3.png" alt="Nevyhasni" loading="lazy">
+        <img src="images/logo/client-4.png" alt="Kovopolotovary.cz" loading="lazy">
+      </div>
     </div>
   </section>
 
@@ -452,6 +476,12 @@
         <p id="adminPasswordMsg" style="color:var(--purple);font-size:.85rem;margin-top:.5rem;display:none;"></p>
       </div>
     </div>
+  </div>
+
+  <!-- ====== LIGHTBOX ====== -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">&times;</button>
+    <img src="" alt="" id="lightboxImg">
   </div>
 
   <script src="js/main.js"></script>
