@@ -45,8 +45,8 @@
 
   <!-- Navigation -->
   <nav class="nav" id="nav">
-    <a href="#" class="nav-logo">
-      <img src="images/logo/logo-white.png" alt="KEYLIGHT" width="140" height="32">
+    <a href="#" class="nav-logo hidden">
+      <img src="images/logo/logo-white.png" alt="KEYLIGHT">
     </a>
     <ul class="nav-links">
       <li><a href="#kdo-jsme">Kdo jsme</a></li>
@@ -104,16 +104,16 @@
               <div class="relight-fader">
                 <div class="relight-fader-header">
                   <span>Key</span>
-                  <span class="fader-value" id="keyValue">020</span>
+                  <span class="fader-value" id="keyValue">070</span>
                 </div>
-                <input type="range" class="relight-slider" id="keySlider" min="0" max="100" value="20" aria-label="Key light — hlavní světlo na lidi">
+                <input type="range" class="relight-slider" id="keySlider" min="0" max="100" value="70" aria-label="Key light — hlavní světlo na lidi">
               </div>
               <div class="relight-fader">
                 <div class="relight-fader-header">
                   <span>Back</span>
-                  <span class="fader-value" id="backValue">015</span>
+                  <span class="fader-value" id="backValue">060</span>
                 </div>
-                <input type="range" class="relight-slider" id="backSlider" min="0" max="100" value="15" aria-label="Back light — světlo na pozadí a logo">
+                <input type="range" class="relight-slider" id="backSlider" min="0" max="100" value="60" aria-label="Back light — světlo na pozadí a logo">
               </div>
             </div>
           </div>
@@ -251,18 +251,22 @@
             <iframe src="about:blank" data-src="https://www.youtube.com/embed/" title="O VŠECHNO" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
-        <div class="show-gallery">
-          <img src="images/fotogalerie/ov-1.jpg" alt="O Všechno — foto 1" loading="lazy">
-          <img src="images/fotogalerie/ov-2.jpg" alt="O Všechno — foto 2" loading="lazy">
-          <img src="images/fotogalerie/ov-3.jpg" alt="O Všechno — foto 3" loading="lazy">
-          <img src="images/fotogalerie/ov-4.jpg" alt="O Všechno — foto 4" loading="lazy">
-          <img src="images/fotogalerie/ov-5.jpg" alt="O Všechno — foto 5" loading="lazy">
-          <img src="images/fotogalerie/ov-6.jpg" alt="O Všechno — foto 6" loading="lazy">
-          <img src="images/fotogalerie/ov-7.jpg" alt="O Všechno — foto 7" loading="lazy">
-          <img src="images/fotogalerie/ov-8.jpg" alt="O Všechno — foto 8" loading="lazy">
-          <img src="images/fotogalerie/ov-9.jpg" alt="O Všechno — foto 9" loading="lazy">
-          <img src="images/fotogalerie/ov-10.jpg" alt="O Všechno — foto 10" loading="lazy">
-          <img src="images/fotogalerie/ov-11.jpg" alt="O Všechno — foto 11" loading="lazy">
+        <div class="show-gallery-wrap">
+          <button class="gallery-arrow gallery-arrow-left" aria-label="Předchozí">&#8249;</button>
+          <div class="show-gallery">
+            <img src="images/fotogalerie/ov-1.jpg" alt="O Všechno — foto 1" loading="lazy">
+            <img src="images/fotogalerie/ov-2.jpg" alt="O Všechno — foto 2" loading="lazy">
+            <img src="images/fotogalerie/ov-3.jpg" alt="O Všechno — foto 3" loading="lazy">
+            <img src="images/fotogalerie/ov-4.jpg" alt="O Všechno — foto 4" loading="lazy">
+            <img src="images/fotogalerie/ov-5.jpg" alt="O Všechno — foto 5" loading="lazy">
+            <img src="images/fotogalerie/ov-6.jpg" alt="O Všechno — foto 6" loading="lazy">
+            <img src="images/fotogalerie/ov-7.jpg" alt="O Všechno — foto 7" loading="lazy">
+            <img src="images/fotogalerie/ov-8.jpg" alt="O Všechno — foto 8" loading="lazy">
+            <img src="images/fotogalerie/ov-9.jpg" alt="O Všechno — foto 9" loading="lazy">
+            <img src="images/fotogalerie/ov-10.jpg" alt="O Všechno — foto 10" loading="lazy">
+            <img src="images/fotogalerie/ov-11.jpg" alt="O Všechno — foto 11" loading="lazy">
+          </div>
+          <button class="gallery-arrow gallery-arrow-right" aria-label="Další">&#8250;</button>
         </div>
       </div>
 
@@ -279,13 +283,17 @@
             <iframe src="about:blank" data-src="" title="MÁŠ TO SPOČÍTANÝ" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
-        <div class="show-gallery">
-          <img src="images/fotogalerie/mts-1.jpg" alt="Máš to spočítaný — foto 1" loading="lazy">
-          <img src="images/fotogalerie/mts-2.jpg" alt="Máš to spočítaný — foto 2" loading="lazy">
-          <img src="images/fotogalerie/mts-3.jpg" alt="Máš to spočítaný — foto 3" loading="lazy">
-          <img src="images/fotogalerie/mts-4.jpg" alt="Máš to spočítaný — foto 4" loading="lazy">
-          <img src="images/fotogalerie/mts-5.jpg" alt="Máš to spočítaný — foto 5" loading="lazy">
-          <img src="images/fotogalerie/mts-6.jpg" alt="Máš to spočítaný — foto 6" loading="lazy">
+        <div class="show-gallery-wrap">
+          <button class="gallery-arrow gallery-arrow-left" aria-label="Předchozí">&#8249;</button>
+          <div class="show-gallery">
+            <img src="images/fotogalerie/mts-1.jpg" alt="Máš to spočítaný — foto 1" loading="lazy">
+            <img src="images/fotogalerie/mts-2.jpg" alt="Máš to spočítaný — foto 2" loading="lazy">
+            <img src="images/fotogalerie/mts-3.jpg" alt="Máš to spočítaný — foto 3" loading="lazy">
+            <img src="images/fotogalerie/mts-4.jpg" alt="Máš to spočítaný — foto 4" loading="lazy">
+            <img src="images/fotogalerie/mts-5.jpg" alt="Máš to spočítaný — foto 5" loading="lazy">
+            <img src="images/fotogalerie/mts-6.jpg" alt="Máš to spočítaný — foto 6" loading="lazy">
+          </div>
+          <button class="gallery-arrow gallery-arrow-right" aria-label="Další">&#8250;</button>
         </div>
       </div>
 
@@ -329,12 +337,20 @@
   <section class="section" id="klienti" style="padding-top:2rem;padding-bottom:2rem;">
     <div class="container">
       <div class="section-header reveal"><span class="section-label">Spolupracovali jsme s</span></div>
-      <div class="clients-strip reveal">
-        <span class="logo-on-dark"><img src="images/logo/client-1.png" alt="Partner" loading="lazy"></span>
-        <img src="images/logo/client-2.png" alt="MailBakers" loading="lazy">
-        <img src="images/logo/client-3.png" alt="Nevyhasni" loading="lazy">
-        <img src="images/logo/client-4.png" alt="Kovopolotovary.cz" loading="lazy">
-        <img src="images/logo/client-euforie.png" alt="Euforie" loading="lazy">
+      <div class="clients-carousel reveal">
+        <div class="clients-track">
+          <span class="logo-on-dark"><img src="images/logo/client-1.png" alt="Partner" loading="lazy"></span>
+          <img src="images/logo/client-2.png" alt="MailBakers" loading="lazy">
+          <img src="images/logo/client-3.png" alt="Nevyhasni" loading="lazy">
+          <img src="images/logo/client-4.png" alt="Kovopolotovary.cz" loading="lazy">
+          <img src="images/logo/client-euforie.png" alt="Euforie" loading="lazy">
+          <!-- Duplicate for seamless loop -->
+          <span class="logo-on-dark"><img src="images/logo/client-1.png" alt="Partner" loading="lazy"></span>
+          <img src="images/logo/client-2.png" alt="MailBakers" loading="lazy">
+          <img src="images/logo/client-3.png" alt="Nevyhasni" loading="lazy">
+          <img src="images/logo/client-4.png" alt="Kovopolotovary.cz" loading="lazy">
+          <img src="images/logo/client-euforie.png" alt="Euforie" loading="lazy">
+        </div>
       </div>
     </div>
   </section>
@@ -347,17 +363,21 @@
         <h2>Lidé za KEYLIGHT</h2>
         <p>Profesionální produkce od A do Z. Scenáristika, osvětlení, zvuk, kamera, střih, distribuce.</p>
       </div>
-      <div class="team-gallery reveal">
-        <div class="photo-large"><img src="images/fotogalerie/hlavni-1.jpg" alt="KEYLIGHT — živé natáčení" loading="lazy"></div>
-        <div><img src="images/fotogalerie/hlavni-2.jpg" alt="KEYLIGHT tým" loading="lazy"></div>
-        <div><img src="images/fotogalerie/hlavni-3.jpg" alt="Natáčení MTS" loading="lazy"></div>
-        <div><img src="images/fotogalerie/hlavni-4.jpg" alt="Zákulisí" loading="lazy"></div>
-        <div><img src="images/tym/tym-1.jpg" alt="Tým KEYLIGHT" loading="lazy"></div>
-        <div><img src="images/tym/tym-2.jpg" alt="KEYLIGHT produkce" loading="lazy"></div>
-        <div><img src="images/tym/tym-3.jpg" alt="KEYLIGHT zákulisí" loading="lazy"></div>
-        <div><img src="images/tym/tym-4.jpg" alt="KEYLIGHT show" loading="lazy"></div>
-        <div><img src="images/tym/tym-5.jpg" alt="KEYLIGHT scéna" loading="lazy"></div>
-        <div><img src="images/tym/tym-6.jpg" alt="KEYLIGHT natáčení" loading="lazy"></div>
+      <div class="team-gallery-wrap reveal">
+        <button class="gallery-arrow gallery-arrow-left" aria-label="Předchozí">&#8249;</button>
+        <div class="team-gallery">
+          <div class="team-photo photo-large"><img src="images/fotogalerie/hlavni-1.jpg" alt="KEYLIGHT — živé natáčení" loading="lazy"><div class="team-photo-caption">Živé natáčení</div></div>
+          <div class="team-photo"><img src="images/fotogalerie/hlavni-2.jpg" alt="KEYLIGHT tým" loading="lazy"><div class="team-photo-caption">Tým KEYLIGHT</div></div>
+          <div class="team-photo"><img src="images/fotogalerie/hlavni-3.jpg" alt="Natáčení MTS" loading="lazy"><div class="team-photo-caption">Natáčení MTS</div></div>
+          <div class="team-photo"><img src="images/fotogalerie/hlavni-4.jpg" alt="Zákulisí" loading="lazy"><div class="team-photo-caption">Zákulisí</div></div>
+          <div class="team-photo"><img src="images/tym/tym-1.jpg" alt="Tým KEYLIGHT" loading="lazy"><div class="team-photo-caption">Produkce</div></div>
+          <div class="team-photo"><img src="images/tym/tym-2.jpg" alt="KEYLIGHT produkce" loading="lazy"><div class="team-photo-caption">Kamera</div></div>
+          <div class="team-photo"><img src="images/tym/tym-3.jpg" alt="KEYLIGHT zákulisí" loading="lazy"><div class="team-photo-caption">Zákulisí</div></div>
+          <div class="team-photo"><img src="images/tym/tym-4.jpg" alt="KEYLIGHT show" loading="lazy"><div class="team-photo-caption">Show</div></div>
+          <div class="team-photo"><img src="images/tym/tym-5.jpg" alt="KEYLIGHT scéna" loading="lazy"><div class="team-photo-caption">Scéna</div></div>
+          <div class="team-photo"><img src="images/tym/tym-6.jpg" alt="KEYLIGHT natáčení" loading="lazy"><div class="team-photo-caption">Natáčení</div></div>
+        </div>
+        <button class="gallery-arrow gallery-arrow-right" aria-label="Další">&#8250;</button>
       </div>
     </div>
   </section>
@@ -442,7 +462,7 @@
   <!-- ====== FOOTER ====== -->
   <footer class="footer">
     <div class="footer-grid">
-      <a href="#" class="footer-logo"><img src="images/logo/logo-white.png" alt="KEYLIGHT" width="120" height="28"></a>
+      <a href="#" class="footer-logo"><img src="images/logo/logo-white.png" alt="KEYLIGHT"></a>
       <ul class="footer-social">
         <li><a href="https://instagram.com/keylight_cz" target="_blank" rel="noopener">Instagram</a></li>
         <li><a href="https://tiktok.com/@keylight_cz" target="_blank" rel="noopener">TikTok</a></li>

@@ -8,9 +8,15 @@
   const nav = document.getElementById('nav');
   const navToggle = document.getElementById('navToggle');
   const navOverlay = document.getElementById('navOverlay');
+  const navLogo = nav.querySelector('.nav-logo');
+  const heroSection = document.getElementById('hero');
 
   window.addEventListener('scroll', function () {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
+    var scrolled = window.scrollY > 60;
+    nav.classList.toggle('scrolled', scrolled);
+    // Hide nav logo when hero (with big logo) is visible
+    var heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+    navLogo.classList.toggle('hidden', window.scrollY < heroBottom - 100);
   });
 
   navToggle.addEventListener('click', function () {
@@ -54,16 +60,32 @@
   function padNum(n) { return String(n).padStart(3, '0'); }
 
   function updateKey(value) {
-    relightKey.style.opacity = value / 100;
+    if (value <= 70) {
+      relightKey.style.opacity = value / 70;
+      relightKey.style.filter = 'none';
+    } else {
+      relightKey.style.opacity = 1;
+      relightKey.style.filter = 'brightness(' + (1 + (value - 70) / 30 * 0.8) + ')';
+    }
     keyValue.textContent = padNum(value);
   }
 
   function updateBack(value) {
-    relightBack.style.opacity = value / 100;
+    if (value <= 60) {
+      relightBack.style.opacity = value / 60;
+      relightBack.style.filter = 'none';
+    } else {
+      relightBack.style.opacity = 1;
+      relightBack.style.filter = 'brightness(' + (1 + (value - 60) / 40 * 0.8) + ')';
+    }
     backValue.textContent = padNum(value);
   }
 
   if (keySlider) {
+    // Set initial brightness from slider defaults
+    updateKey(parseInt(keySlider.value, 10));
+    updateBack(parseInt(backSlider.value, 10));
+
     keySlider.addEventListener('input', function () { updateKey(parseInt(this.value, 10)); });
     backSlider.addEventListener('input', function () { updateBack(parseInt(this.value, 10)); });
 
@@ -88,18 +110,18 @@
       if (!startTime) startTime = timestamp;
       var progress = Math.min((timestamp - startTime) / duration, 1);
 
-      // Key light: 20 → 100 → 20
+      // Key: 0 → 70, Back: 0 → 60 (settle at natural defaults)
       var keyVal, backVal;
       if (progress < 0.5) {
-        keyVal = 20 + 80 * (progress * 2);
-        backVal = 15 + 85 * Math.max(0, (progress - 0.15) * 2.86);
+        keyVal = 70 * (progress * 2);
+        backVal = 60 * Math.max(0, (progress - 0.1) * 2.5);
       } else {
-        keyVal = 100 - 80 * ((progress - 0.5) * 2);
-        backVal = 100 - 85 * ((progress - 0.5) * 2);
+        keyVal = 70;
+        backVal = 60;
       }
 
-      keyVal = Math.round(Math.min(keyVal, 100));
-      backVal = Math.round(Math.max(Math.min(backVal, 100), 15));
+      keyVal = Math.round(Math.min(keyVal, 70));
+      backVal = Math.round(Math.max(Math.min(backVal, 60), 0));
 
       keySlider.value = keyVal;
       backSlider.value = backVal;
@@ -417,6 +439,23 @@
     img.addEventListener('click', function () {
       openLightbox(this.src, this.alt);
     });
+  });
+
+  /* ---------- Gallery Arrow Navigation ---------- */
+  document.querySelectorAll('.show-gallery-wrap, .team-gallery-wrap').forEach(function (wrap) {
+    var gallery = wrap.querySelector('.show-gallery, .team-gallery');
+    var leftBtn = wrap.querySelector('.gallery-arrow-left');
+    var rightBtn = wrap.querySelector('.gallery-arrow-right');
+    var scrollAmount = 260;
+
+    if (leftBtn && rightBtn && gallery) {
+      leftBtn.addEventListener('click', function () {
+        gallery.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      });
+      rightBtn.addEventListener('click', function () {
+        gallery.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      });
+    }
   });
 
   /* ---------- Smooth scroll for anchor links ---------- */
