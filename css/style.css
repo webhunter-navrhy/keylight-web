@@ -225,8 +225,8 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
 }
 
 .hero-content .hero-logo {
-  width: clamp(300px, 60vw, 600px);
-  margin: 0 auto .5rem;
+  width: clamp(250px, 45vw, 500px);
+  margin: 0 auto 1rem;
 }
 
 .hero-content h1 {
