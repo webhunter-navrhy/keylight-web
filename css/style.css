@@ -792,21 +792,13 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
   gap: 1rem;
 }
 
-.team-gallery .photo-large {
-  grid-column: span 2;
-  grid-row: span 2;
-}
-
 .team-gallery img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 20%;
   border-radius: 12px;
   aspect-ratio: 4/3;
-}
-
-.team-gallery .photo-large img {
-  aspect-ratio: auto;
 }
 
 .team-gallery > div {
@@ -1226,7 +1218,6 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
   }
 
   .team-gallery { grid-template-columns: 1fr 1fr; }
-  .team-gallery .photo-large { grid-column: span 2; grid-row: span 1; }
 
   .form-row { grid-template-columns: 1fr; }
 
@@ -1247,6 +1238,5 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
 @media (max-width: 480px) {
   .stat-card { flex: 0 1 100%; }
   .team-gallery { grid-template-columns: 1fr; }
-  .team-gallery .photo-large { grid-column: span 1; }
   .shows-grid { grid-template-columns: 1fr !important; }
 }
