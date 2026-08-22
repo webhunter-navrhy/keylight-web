@@ -146,6 +146,7 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
   display: flex;
   gap: 1.5rem;
   list-style: none;
+  align-items: center;
 }
 
 .nav-links a {
