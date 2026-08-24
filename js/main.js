@@ -411,7 +411,15 @@
   }, { rootMargin: '200px' });
 
   document.querySelectorAll('iframe[data-src]').forEach(function (iframe) {
-    iframeObserver.observe(iframe);
+    var src = iframe.getAttribute('data-src');
+    // Only observe iframes with valid video URLs (not empty or stub embed URLs)
+    if (src && src.length > 35) {
+      iframeObserver.observe(iframe);
+    } else {
+      // No valid video — show placeholder and hide iframe
+      iframe.style.display = 'none';
+      iframe.parentElement.classList.add('no-video');
+    }
   });
 
   /* ---------- Lightbox with navigation ---------- */
