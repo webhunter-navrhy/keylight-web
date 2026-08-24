@@ -498,6 +498,15 @@
     var scrollAmount = 260;
 
     if (leftBtn && rightBtn && gallery) {
+      // Hide arrows if all images fit without scrolling
+      function checkArrows() {
+        var needsScroll = gallery.scrollWidth > gallery.clientWidth + 10;
+        leftBtn.style.display = needsScroll ? '' : 'none';
+        rightBtn.style.display = needsScroll ? '' : 'none';
+      }
+      checkArrows();
+      window.addEventListener('resize', checkArrows);
+
       leftBtn.addEventListener('click', function () {
         gallery.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
       });

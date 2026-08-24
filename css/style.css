@@ -73,7 +73,7 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
   letter-spacing: .15em;
   text-transform: uppercase;
   color: var(--purple);
-  margin-bottom: .75rem;
+  margin-bottom: 1.25rem;
 }
 
 /* --- Buttons --- */
@@ -274,8 +274,7 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
   align-items: center;
 }
 
-.about-text p { margin-bottom: 1rem; color: #444; }
-.about-text p:first-of-type { font-size: 1.1rem; }
+.about-text p { margin-bottom: 1rem; color: #444; font-size: 1rem; }
 
 /* --- Relight Interactive Element --- */
 .relight-wrapper {
@@ -451,7 +450,8 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
 }
 
 .stat-card-big {
-  flex: 0 1 350px;
+  flex: 1 1 0;
+  max-width: 400px;
   padding: 2rem;
   position: relative;
 }
@@ -824,8 +824,9 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
 .team-track {
   display: flex;
   gap: 1.5rem;
-  animation: scrollTeam 25s linear infinite;
+  animation: scrollTeam 30s linear infinite;
   width: max-content;
+  will-change: transform;
 }
 
 @keyframes scrollTeam {
@@ -834,9 +835,9 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
 }
 
 .team-track img {
-  height: 280px;
+  height: 340px;
   width: auto;
-  aspect-ratio: 4/3;
+  aspect-ratio: 3/4;
   object-fit: cover;
   object-position: center 20%;
   border-radius: 12px;
