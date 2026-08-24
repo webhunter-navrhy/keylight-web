@@ -131,7 +131,7 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
   box-shadow: 0 2px 20px rgba(0,0,0,.2);
 }
 
-.nav-logo img { height: 60px; width: auto; }
+.nav-logo img { height: 40px; width: auto; }
 
 .nav-logo {
   transition: opacity .3s;
@@ -217,7 +217,7 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
 }
 
 .hero-bg .hero-slide.active {
-  opacity: .45;
+  opacity: .55;
 }
 
 .hero-content {
@@ -228,22 +228,16 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
 }
 
 .hero-content .hero-logo {
-  width: clamp(350px, 55vw, 650px);
-  margin: 0 auto 1rem;
+  width: clamp(400px, 60vw, 700px);
+  margin: 0 auto 1.5rem;
 }
 
-.hero-content h1 {
-  font-size: clamp(1.4rem, 3.5vw, 2.2rem);
-  margin-bottom: .5rem;
-}
-
-.hero-content p {
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
-  opacity: .9;
-  margin-bottom: 1.2rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+.hero-tagline {
+  font-size: clamp(.95rem, 2vw, 1.15rem);
+  opacity: .85;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+  letter-spacing: .02em;
 }
 
 /* --- Sections --- */
@@ -390,48 +384,52 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
 /* --- Stats / Cisla --- */
 .stats-grid {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 1rem;
   margin-bottom: 3rem;
 }
 
 .stat-card {
-  flex: 0 1 calc(20% - 1.5rem);
-  min-width: 180px;
+  flex: 1 1 0;
   background: rgba(255,255,255,.08);
   border: 1px solid rgba(255,255,255,.12);
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 1.25rem 1rem;
   text-align: center;
 }
 
 .stat-value {
   font-family: var(--font-heading);
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
   font-weight: 900;
   color: var(--white);
   line-height: 1.1;
 }
 
 .stat-label {
-  font-size: .85rem;
+  font-family: var(--font-body);
+  font-size: .8rem;
+  font-weight: 400;
   opacity: .7;
   margin-top: .3rem;
 }
 
 .demo-table {
   width: 100%;
+  max-width: 700px;
+  margin: 2rem auto 0;
   border-collapse: collapse;
-  margin-top: 2rem;
+  text-align: center;
 }
 
 .demo-table th,
 .demo-table td {
   padding: .75rem 1rem;
-  text-align: left;
+  text-align: center;
   border-bottom: 1px solid rgba(255,255,255,.1);
-  font-size: .9rem;
+  font-family: var(--font-body);
+  font-size: .85rem;
 }
 
 .demo-table th {
@@ -448,6 +446,7 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
   display: flex;
   gap: 1.5rem;
   justify-content: center;
+  align-items: center;
   margin-bottom: 2.5rem;
 }
 
@@ -461,8 +460,14 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
   font-size: clamp(2.5rem, 5vw, 3.5rem);
 }
 
+.stat-card-big .stat-label {
+  font-size: .85rem;
+}
+
 .stat-platforms {
+  font-family: var(--font-body);
   font-size: .75rem;
+  font-weight: 400;
   opacity: .5;
   margin-top: .5rem;
 }
@@ -482,14 +487,18 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
 .stats-subheading {
   text-align: center;
   color: var(--gray);
-  font-size: 1rem;
+  font-family: var(--font-body);
+  font-size: .85rem;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .1em;
   margin-bottom: 1.5rem;
 }
 
 .stat-platform {
+  font-family: var(--font-body);
   font-size: .7rem;
+  font-weight: 400;
   opacity: .5;
   margin-top: .3rem;
   text-transform: uppercase;
@@ -753,11 +762,11 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
 .clients-track {
   display: flex;
   align-items: center;
-  gap: 4rem;
-  animation: scrollLogos 20s linear infinite;
+  gap: 5rem;
+  animation: scrollLogos 30s linear infinite;
   width: max-content;
+  will-change: transform;
 }
-
 
 @keyframes scrollLogos {
   0% { transform: translateX(0); }
@@ -765,8 +774,8 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
 }
 
 .clients-track img {
-  height: 45px;
-  opacity: .8;
+  height: 40px;
+  opacity: .7;
   transition: opacity .3s;
   flex-shrink: 0;
 }
@@ -782,32 +791,62 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
 }
 
 .clients-track .logo-on-dark img {
-  height: 32px;
+  height: 30px;
 }
 
 /* --- Team / Tym --- */
-.team-gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+.team-carousel {
+  position: relative;
+  overflow: hidden;
 }
 
-.team-gallery img {
-  width: 100%;
-  height: 100%;
+.team-carousel::before,
+.team-carousel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.team-carousel::before {
+  left: 0;
+  background: linear-gradient(to right, #f5f5f6, transparent);
+}
+
+.team-carousel::after {
+  right: 0;
+  background: linear-gradient(to left, #f5f5f6, transparent);
+}
+
+.team-track {
+  display: flex;
+  gap: 1.5rem;
+  animation: scrollTeam 25s linear infinite;
+  width: max-content;
+}
+
+@keyframes scrollTeam {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.team-track img {
+  height: 280px;
+  width: auto;
+  aspect-ratio: 4/3;
   object-fit: cover;
   object-position: center 20%;
   border-radius: 12px;
-  aspect-ratio: 4/3;
-}
-
-.team-gallery > div {
+  flex-shrink: 0;
   cursor: pointer;
   transition: transform .2s;
 }
 
-.team-gallery > div:hover {
-  transform: scale(1.02);
+.team-track img:hover {
+  transform: scale(1.03);
 }
 
 /* --- Contact / Formular --- */
@@ -875,10 +914,12 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
 
 .contact-info {
   color: rgba(255,255,255,.8);
+  font-family: var(--font-body);
 }
 
-.contact-info h3 { color: var(--white); margin-bottom: 1rem; }
-.contact-info p { margin-bottom: 1rem; }
+.contact-info h3 { color: var(--white); margin-bottom: 1rem; font-family: var(--font-heading); }
+.contact-info h4 { font-family: var(--font-body); }
+.contact-info p { margin-bottom: 1rem; font-family: var(--font-body); font-size: .95rem; }
 
 .contact-info .contact-direct {
   margin-top: 2rem;
@@ -889,12 +930,13 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
 .contact-direct a {
   color: var(--white);
   font-weight: 600;
-  font-size: 1.1rem;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
 }
 
 .contact-direct p {
-  font-size: .85rem;
-  opacity: .6;
+  font-family: var(--font-body);
+  font-size: .9rem;
 }
 
 /* Thank you message */
@@ -1217,7 +1259,7 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
     grid-template-columns: 1fr;
   }
 
-  .team-gallery { grid-template-columns: 1fr 1fr; }
+  .team-track img { height: 220px; }
 
   .form-row { grid-template-columns: 1fr; }
 
@@ -1236,7 +1278,8 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
 }
 
 @media (max-width: 480px) {
-  .stat-card { flex: 0 1 100%; }
-  .team-gallery { grid-template-columns: 1fr; }
+  .stats-grid { flex-wrap: wrap; }
+  .stat-card { flex: 0 1 calc(50% - .5rem); }
+  .team-track img { height: 180px; }
   .shows-grid { grid-template-columns: 1fr !important; }
 }

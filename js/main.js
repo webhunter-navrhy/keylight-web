@@ -40,8 +40,11 @@
     var current = 0;
     setInterval(function () {
       slides[current].classList.remove('active');
-      current = (current + 1) % slides.length;
-      slides[current].classList.add('active');
+      // Brief black gap before next slide
+      setTimeout(function () {
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+      }, 800);
     }, 5000);
   })();
 
@@ -463,12 +466,16 @@
     });
   }
 
-  // Team gallery photos — click to open lightbox with navigation
+  // Team carousel photos — click to open lightbox with navigation (unique images only)
   (function () {
-    var teamImgs = Array.from(document.querySelectorAll('.team-gallery img'));
-    teamImgs.forEach(function (img, i) {
+    var allTeamImgs = Array.from(document.querySelectorAll('.team-track img'));
+    // Only use first half (originals, not duplicates)
+    var uniqueCount = Math.ceil(allTeamImgs.length / 2);
+    var teamImgs = allTeamImgs.slice(0, uniqueCount);
+    allTeamImgs.forEach(function (img) {
+      var idx = allTeamImgs.indexOf(img) % uniqueCount;
       img.addEventListener('click', function () {
-        openLightbox(this.src, this.alt, teamImgs, i);
+        openLightbox(teamImgs[idx].src, teamImgs[idx].alt, teamImgs, idx);
       });
     });
   })();
