@@ -32,6 +32,14 @@
     ]
   }
   </script>
+  <!-- Google Analytics 4 (consent mode) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NMF84E1EK"></script>
+  <script>
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+    gtag('consent','default',{analytics_storage:'denied'});
+    gtag('js',new Date());
+    gtag('config','G-0NMF84E1EK');
+  </script>
 </head>
 <body>
 
@@ -358,12 +366,14 @@
           <img src="images/logo/client-3.png" alt="Nevyhasni" loading="lazy">
           <img src="images/logo/client-4.png" alt="Kovopolotovary.cz" loading="lazy">
           <img src="images/logo/client-euforie.png" alt="Euforie" loading="lazy">
+          <img src="images/logo/client-vitart.png" alt="Sound of vitart" loading="lazy">
           <!-- Duplicate for seamless loop -->
           <span class="logo-on-dark"><img src="images/logo/client-1.png" alt="Partner" loading="lazy"></span>
           <img src="images/logo/client-2.png" alt="MailBakers" loading="lazy">
           <img src="images/logo/client-3.png" alt="Nevyhasni" loading="lazy">
           <img src="images/logo/client-4.png" alt="Kovopolotovary.cz" loading="lazy">
           <img src="images/logo/client-euforie.png" alt="Euforie" loading="lazy">
+          <img src="images/logo/client-vitart.png" alt="Sound of vitart" loading="lazy">
         </div>
       </div>
     </div>
@@ -493,6 +503,17 @@
     <button class="lightbox-arrow lightbox-prev" id="lightboxPrev">&#8249;</button>
     <img src="" alt="" id="lightboxImg">
     <button class="lightbox-arrow lightbox-next" id="lightboxNext">&#8250;</button>
+  </div>
+
+  <!-- Cookie Banner -->
+  <div class="cookie-banner" id="cookieBanner">
+    <div class="cookie-inner">
+      <p>Tento web používá cookies pro analytiku (Google Analytics) za účelem zlepšení našich služeb. <a href="gdpr/">Více informací</a>.</p>
+      <div class="cookie-buttons">
+        <button class="cookie-btn cookie-accept" id="cookieAccept">Souhlasím</button>
+        <button class="cookie-btn cookie-decline" id="cookieDecline">Odmítnout</button>
+      </div>
+    </div>
   </div>
 
   <script src="js/main.js"></script>

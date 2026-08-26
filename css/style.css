@@ -1046,6 +1046,48 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
 
 .footer-admin-btn:hover { color: rgba(255,255,255,.4); }
 
+/* --- Cookie Banner --- */
+.cookie-banner {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: var(--black);
+  color: var(--white);
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 -4px 20px rgba(0,0,0,.2);
+}
+
+.cookie-banner.show { display: flex; }
+
+.cookie-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.cookie-inner p { font-size: .85rem; opacity: .8; flex: 1; min-width: 200px; }
+.cookie-inner p a { color: var(--purple); text-decoration: underline; }
+.cookie-buttons { display: flex; gap: .75rem; }
+
+.cookie-btn {
+  padding: .5rem 1.25rem;
+  border-radius: 6px;
+  font-size: .85rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-body);
+}
+
+.cookie-accept { background: var(--purple); color: var(--white); }
+.cookie-decline { background: rgba(255,255,255,.1); color: var(--white); }
 
 /* --- Scroll Animations --- */
 .reveal {

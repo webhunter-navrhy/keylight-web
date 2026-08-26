@@ -154,6 +154,29 @@
     requestAnimationFrame(step);
   }
 
+  /* ---------- Cookie Consent (GA4) ---------- */
+  var cookieBanner = document.getElementById('cookieBanner');
+  var cookieAccept = document.getElementById('cookieAccept');
+  var cookieDecline = document.getElementById('cookieDecline');
+
+  var consent = localStorage.getItem('kl_cookie_consent');
+  if (consent === 'accepted') {
+    gtag('consent', 'update', { analytics_storage: 'granted' });
+  } else if (!consent) {
+    cookieBanner.classList.add('show');
+  }
+
+  cookieAccept.addEventListener('click', function () {
+    localStorage.setItem('kl_cookie_consent', 'accepted');
+    cookieBanner.classList.remove('show');
+    gtag('consent', 'update', { analytics_storage: 'granted' });
+  });
+
+  cookieDecline.addEventListener('click', function () {
+    localStorage.setItem('kl_cookie_consent', 'declined');
+    cookieBanner.classList.remove('show');
+  });
+
   /* ---------- Contact Form ---------- */
   var contactForm = document.getElementById('contactForm');
   var formSuccess = document.getElementById('formSuccess');
