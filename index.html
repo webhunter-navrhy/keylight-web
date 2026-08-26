@@ -32,16 +32,8 @@
     ]
   }
   </script>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-542MMSL');</script>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-542MMSL" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- Navigation -->
   <nav class="nav" id="nav">
@@ -491,43 +483,15 @@
     <div class="footer-bottom">
       <span>KEYLIGHT &middot; IČO 17284007 &middot; Praha</span>
       <span><a href="gdpr/">Ochrana osobních údajů</a> &middot; <a href="mailto:info@klight.cz">info@klight.cz</a></span>
+      <button class="footer-admin-btn" id="analyticsBtn" title="Analytika">&bull;</button>
     </div>
   </footer>
 
-  <!-- ====== COOKIE BANNER ====== -->
-  <div class="cookie-banner" id="cookieBanner">
-    <div class="cookie-inner">
-      <p>Tento web používá cookies pro analytiku (Google Analytics) za účelem zlepšení našich služeb. <a href="gdpr/">Více informací</a>.</p>
-      <div class="cookie-buttons">
-        <button class="cookie-btn cookie-accept" id="cookieAccept">Souhlasím</button>
-        <button class="cookie-btn cookie-decline" id="cookieDecline">Odmítnout</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ====== ADMIN MODAL ====== -->
-  <div id="adminModal" style="display:none;position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.8);align-items:center;justify-content:center;">
-    <div style="background:var(--white);border-radius:16px;padding:2rem;max-width:500px;width:90%;max-height:90vh;overflow-y:auto;position:relative;">
-      <button id="adminClose" style="position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:#999;">&times;</button>
-      <div id="adminLogin">
-        <h3 style="font-family:var(--font-heading);margin-bottom:1rem;color:var(--indigo);">Administrace</h3>
-        <input type="password" id="adminPassword" placeholder="Heslo" style="width:100%;padding:.75rem;border:1px solid #ddd;border-radius:8px;margin-bottom:1rem;font-family:var(--font-body);">
-        <button id="adminLoginBtn" class="btn btn-primary" style="width:100%;justify-content:center;">Přihlásit</button>
-        <p id="adminError" style="color:#ff6b6b;font-size:.85rem;margin-top:.5rem;display:none;">Nesprávné heslo.</p>
-      </div>
-      <div id="adminPanel" style="display:none;">
-        <h3 style="font-family:var(--font-heading);margin-bottom:1rem;color:var(--indigo);">Upravit obsah</h3>
-        <div id="adminFields"></div>
-        <div style="display:flex;gap:.75rem;margin-top:1.5rem;">
-          <button id="adminSave" class="btn btn-primary" style="flex:1;justify-content:center;">Uložit</button>
-          <button id="adminExport" class="btn btn-outline-dark" style="flex:1;justify-content:center;">Stáhnout JSON</button>
-        </div>
-        <hr style="margin:1.5rem 0;border:none;border-top:1px solid #eee;">
-        <h4 style="font-family:var(--font-heading);margin-bottom:.75rem;color:var(--indigo);">Změnit heslo</h4>
-        <input type="password" id="adminNewPassword" placeholder="Nové heslo" style="width:100%;padding:.75rem;border:1px solid #ddd;border-radius:8px;margin-bottom:.5rem;font-family:var(--font-body);">
-        <button id="adminChangePassword" class="btn btn-outline-dark" style="width:100%;justify-content:center;">Změnit heslo</button>
-        <p id="adminPasswordMsg" style="color:var(--purple);font-size:.85rem;margin-top:.5rem;display:none;"></p>
-      </div>
+  <!-- ====== ANALYTICS MODAL ====== -->
+  <div id="analyticsModal" style="display:none;position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.9);align-items:flex-start;justify-content:center;overflow-y:auto;">
+    <div class="analytics-panel" id="analyticsPanel">
+      <button id="analyticsClose" style="position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:#999;">&times;</button>
+      <div id="analyticsContent"></div>
     </div>
   </div>
 

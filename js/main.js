@@ -154,28 +154,6 @@
     requestAnimationFrame(step);
   }
 
-  /* ---------- Cookie Banner ---------- */
-  var cookieBanner = document.getElementById('cookieBanner');
-  var cookieAccept = document.getElementById('cookieAccept');
-  var cookieDecline = document.getElementById('cookieDecline');
-
-  if (!localStorage.getItem('kl_cookie_consent')) {
-    cookieBanner.classList.add('show');
-  }
-
-  cookieAccept.addEventListener('click', function () {
-    localStorage.setItem('kl_cookie_consent', 'accepted');
-    cookieBanner.classList.remove('show');
-    // Enable GTM tracking
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'cookie_consent_granted' });
-  });
-
-  cookieDecline.addEventListener('click', function () {
-    localStorage.setItem('kl_cookie_consent', 'declined');
-    cookieBanner.classList.remove('show');
-  });
-
   /* ---------- Contact Form ---------- */
   var contactForm = document.getElementById('contactForm');
   var formSuccess = document.getElementById('formSuccess');
@@ -183,13 +161,6 @@
   if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
       e.preventDefault();
-
-      // GA4 event
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: 'form_submission',
-        form_name: 'contact_form'
-      });
 
       // Submit via FormSubmit
       var formData = new FormData(contactForm);
@@ -255,150 +226,239 @@
 
   loadContent();
 
-  /* ---------- Admin Panel ---------- */
-  var adminBtn = document.getElementById('adminBtn');
-  var adminModal = document.getElementById('adminModal');
-  var adminClose = document.getElementById('adminClose');
-  var adminLoginBtn = document.getElementById('adminLoginBtn');
-  var adminPassword = document.getElementById('adminPassword');
-  var adminError = document.getElementById('adminError');
-  var adminLogin = document.getElementById('adminLogin');
-  var adminPanel = document.getElementById('adminPanel');
-  var adminFields = document.getElementById('adminFields');
-  var adminSave = document.getElementById('adminSave');
-  var adminExport = document.getElementById('adminExport');
-  var adminChangePassword = document.getElementById('adminChangePassword');
-  var adminNewPassword = document.getElementById('adminNewPassword');
-  var adminPasswordMsg = document.getElementById('adminPasswordMsg');
+  /* ---------- Analytics — Tracking ---------- */
+  var AN_KEY = 'kl_analytics';
+  var AN_PW_KEY = 'kl_an_pw';
 
-  var DEFAULT_PASSWORD = 'admin';
-  var currentContent = null;
-
-  function getPasswordHash() {
-    return localStorage.getItem('kl_admin_pw') || DEFAULT_PASSWORD;
+  function anGet() {
+    try { return JSON.parse(localStorage.getItem(AN_KEY)) || { visits: [], sections: {}, clicks: {} }; }
+    catch (e) { return { visits: [], sections: {}, clicks: {} }; }
   }
 
-  adminBtn.addEventListener('click', function () {
-    adminModal.style.display = 'flex';
-    adminLogin.style.display = 'block';
-    adminPanel.style.display = 'none';
-    adminError.style.display = 'none';
-    adminPassword.value = '';
-    adminPassword.focus();
-  });
-
-  adminClose.addEventListener('click', function () {
-    adminModal.style.display = 'none';
-  });
-
-  adminModal.addEventListener('click', function (e) {
-    if (e.target === adminModal) adminModal.style.display = 'none';
-  });
-
-  adminPassword.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') adminLoginBtn.click();
-  });
-
-  adminLoginBtn.addEventListener('click', function () {
-    if (adminPassword.value === getPasswordHash()) {
-      adminLogin.style.display = 'none';
-      adminPanel.style.display = 'block';
-      loadAdminFields();
-    } else {
-      adminError.style.display = 'block';
-    }
-  });
-
-  function loadAdminFields() {
-    var stored = localStorage.getItem('kl_content');
-    if (stored) {
-      try { currentContent = JSON.parse(stored); } catch (e) { currentContent = null; }
-    }
-
-    if (!currentContent) {
-      fetch('content.json')
-        .then(function (r) { return r.json(); })
-        .then(function (data) {
-          currentContent = data;
-          renderAdminFields();
-        });
-    } else {
-      renderAdminFields();
-    }
+  function anSave(d) {
+    if (d.visits.length > 10000) d.visits = d.visits.slice(-10000);
+    localStorage.setItem(AN_KEY, JSON.stringify(d));
   }
 
-  var fieldLabels = {
-    viewsTotal: 'Zhlédnutí celkem',
-    ig_views: 'Instagram — zhlédnutí',
-    ig_reach: 'Instagram — oslovené účty',
-    ig_interactions: 'Instagram — interakce',
-    ig_nonFollowerReach: 'Instagram — zásah mimo sledující',
-    yt_views: 'YouTube — zhlédnutí',
-    yt_watchTime: 'YouTube — shlédnutý čas',
-    live_attendance: 'Živé natáčení — návštěvnost',
-    live_note: 'Živé natáčení — poznámka'
-  };
+  // Record this visit
+  (function () {
+    var d = anGet();
+    var ua = navigator.userAgent;
+    var mobile = /Mobi|Android/i.test(ua);
+    var browser = ua.indexOf('Edg') > -1 ? 'Edge' : ua.indexOf('Chrome') > -1 ? 'Chrome' : ua.indexOf('Firefox') > -1 ? 'Firefox' : ua.indexOf('Safari') > -1 ? 'Safari' : 'Jiný';
+    var ref = '';
+    try { if (document.referrer) { var h = new URL(document.referrer).hostname; if (h !== location.hostname) ref = h; } } catch (e) {}
+    d.visits.push({ t: Math.floor(Date.now() / 1000), r: ref, d: mobile ? 'm' : 'd', s: screen.width + 'x' + screen.height, b: browser });
+    anSave(d);
+  })();
 
-  function renderAdminFields() {
-    var html = '<div style="margin-bottom:1rem;"><label style="font-size:.85rem;font-weight:600;">Období</label>' +
-      '<input type="text" data-field="meta.period" value="' + escHtml(currentContent.meta.period) + '" ' +
-      'style="width:100%;padding:.5rem;border:1px solid #ddd;border-radius:6px;margin-top:.25rem;font-family:var(--font-body);"></div>';
-
-    for (var key in fieldLabels) {
-      var val = currentContent.stats[key] || '';
-      html += '<div style="margin-bottom:.75rem;"><label style="font-size:.8rem;font-weight:600;color:#666;">' +
-        fieldLabels[key] + '</label>' +
-        '<input type="text" data-field="stats.' + key + '" value="' + escHtml(val) + '" ' +
-        'style="width:100%;padding:.5rem;border:1px solid #ddd;border-radius:6px;margin-top:.2rem;font-family:var(--font-body);"></div>';
-    }
-
-    adminFields.innerHTML = html;
-  }
-
-  function escHtml(str) {
-    return String(str).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  }
-
-  adminSave.addEventListener('click', function () {
-    adminFields.querySelectorAll('input[data-field]').forEach(function (input) {
-      var path = input.getAttribute('data-field').split('.');
-      var obj = currentContent;
-      for (var i = 0; i < path.length - 1; i++) {
-        obj = obj[path[i]];
+  // Track section views
+  var sectionObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting && entry.target.id) {
+        var d = anGet();
+        d.sections[entry.target.id] = (d.sections[entry.target.id] || 0) + 1;
+        anSave(d);
+        sectionObs.unobserve(entry.target);
       }
-      obj[path[path.length - 1]] = input.value;
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('section[id]').forEach(function (s) { sectionObs.observe(s); });
+
+  // Track clicks on CTAs, social links, email, phone
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('a, button[type="submit"]');
+    if (!link) return;
+    var label = '';
+    var href = link.href || '';
+    if (link.classList.contains('btn-primary') || link.type === 'submit') label = 'cta';
+    else if (href.indexOf('instagram') > -1) label = 'social-ig';
+    else if (href.indexOf('tiktok') > -1) label = 'social-tt';
+    else if (href.indexOf('youtube') > -1) label = 'social-yt';
+    else if (href.indexOf('mailto:') > -1) label = 'email';
+    else if (href.indexOf('tel:') > -1) label = 'telefon';
+    if (label) { var d = anGet(); d.clicks[label] = (d.clicks[label] || 0) + 1; anSave(d); }
+  });
+
+  /* ---------- Analytics — Dashboard ---------- */
+  (function () {
+    var btn = document.getElementById('analyticsBtn');
+    var modal = document.getElementById('analyticsModal');
+    var closeBtn = document.getElementById('analyticsClose');
+    var content = document.getElementById('analyticsContent');
+    if (!btn || !modal) return;
+
+    function getPw() { return localStorage.getItem(AN_PW_KEY) || 'admin'; }
+
+    btn.addEventListener('click', function () {
+      modal.style.display = 'flex';
+      showLogin();
     });
 
-    currentContent.meta.lastUpdated = new Date().toISOString().slice(0, 10);
-    localStorage.setItem('kl_content', JSON.stringify(currentContent));
-    applyContent(currentContent);
-    adminSave.textContent = 'Uloženo!';
-    setTimeout(function () { adminSave.textContent = 'Uložit'; }, 2000);
-  });
+    closeBtn.addEventListener('click', function () { modal.style.display = 'none'; });
+    modal.addEventListener('click', function (e) { if (e.target === modal) modal.style.display = 'none'; });
 
-  adminExport.addEventListener('click', function () {
-    var blob = new Blob([JSON.stringify(currentContent, null, 2)], { type: 'application/json' });
-    var url = URL.createObjectURL(blob);
-    var a = document.createElement('a');
-    a.href = url;
-    a.download = 'content.json';
-    a.click();
-    URL.revokeObjectURL(url);
-  });
-
-  adminChangePassword.addEventListener('click', function () {
-    var newPw = adminNewPassword.value.trim();
-    if (newPw.length < 3) {
-      adminPasswordMsg.textContent = 'Heslo musí mít alespoň 3 znaky.';
-      adminPasswordMsg.style.display = 'block';
-      return;
+    function showLogin() {
+      content.innerHTML =
+        '<div class="an-login">' +
+        '<h3>Analytika</h3>' +
+        '<input type="password" id="anPwInput" placeholder="Heslo">' +
+        '<button class="btn btn-primary" style="width:100%;justify-content:center;" id="anLoginBtn">Přihlásit</button>' +
+        '<p class="an-error" id="anError">Nesprávné heslo.</p>' +
+        '</div>';
+      var inp = document.getElementById('anPwInput');
+      var loginBtn = document.getElementById('anLoginBtn');
+      var err = document.getElementById('anError');
+      inp.focus();
+      inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') loginBtn.click(); });
+      loginBtn.addEventListener('click', function () {
+        if (inp.value === getPw()) { showDashboard(); }
+        else { err.style.display = 'block'; }
+      });
     }
-    localStorage.setItem('kl_admin_pw', newPw);
-    adminNewPassword.value = '';
-    adminPasswordMsg.textContent = 'Heslo bylo změněno.';
-    adminPasswordMsg.style.display = 'block';
-    setTimeout(function () { adminPasswordMsg.style.display = 'none'; }, 3000);
-  });
+
+    var sectionNames = {
+      'hero': 'Hero', 'kdo-jsme': 'Kdo jsme', 'cisla': 'Výsledky', 'porady': 'Pořady',
+      'spoluprace': 'Spolupráce', 'klienti': 'Klienti', 'tym': 'Tým', 'kontakt': 'Kontakt'
+    };
+    var clickNames = {
+      'cta': 'CTA tlačítko', 'social-ig': 'Instagram', 'social-tt': 'TikTok',
+      'social-yt': 'YouTube', 'email': 'E-mail', 'telefon': 'Telefon'
+    };
+
+    function showDashboard() {
+      var data = anGet();
+      var now = Math.floor(Date.now() / 1000);
+      var dayAgo = now - 86400;
+      var weekAgo = now - 604800;
+      var monthAgo = now - 2592000;
+
+      var total = data.visits.length;
+      var today = data.visits.filter(function (v) { return v.t >= dayAgo; }).length;
+      var week = data.visits.filter(function (v) { return v.t >= weekAgo; }).length;
+      var month = data.visits.filter(function (v) { return v.t >= monthAgo; }).length;
+      var mobile = data.visits.filter(function (v) { return v.d === 'm'; }).length;
+      var desktop = total - mobile;
+
+      // Browser stats
+      var browsers = {};
+      data.visits.forEach(function (v) { browsers[v.b] = (browsers[v.b] || 0) + 1; });
+
+      // Referrer stats
+      var refs = {};
+      data.visits.forEach(function (v) { if (v.r) refs[v.r] = (refs[v.r] || 0) + 1; });
+      var topRefs = Object.keys(refs).sort(function (a, b) { return refs[b] - refs[a]; }).slice(0, 10);
+
+      // Section bars
+      var maxSection = 1;
+      for (var k in data.sections) { if (data.sections[k] > maxSection) maxSection = data.sections[k]; }
+
+      // Build HTML
+      var html = '<h3>Analytika webu</h3>';
+
+      // Summary cards
+      html += '<div class="an-grid">';
+      html += card(total, 'Celkem návštěv');
+      html += card(today, 'Dnes');
+      html += card(week, 'Tento týden');
+      html += card(month, 'Tento měsíc');
+      html += '</div>';
+
+      // Devices
+      html += '<h4>Zařízení</h4><div class="an-grid">';
+      html += card(mobile, 'Mobil');
+      html += card(desktop, 'Desktop');
+      html += '</div>';
+
+      // Browsers
+      html += '<h4>Prohlížeče</h4><div class="an-grid">';
+      for (var b in browsers) { html += card(browsers[b], b); }
+      html += '</div>';
+
+      // Sections
+      html += '<h4>Zobrazení sekcí</h4>';
+      for (var s in data.sections) {
+        var name = sectionNames[s] || s;
+        var pct = Math.round(data.sections[s] / maxSection * 100);
+        html += '<div class="an-bar-wrap"><div class="an-bar-label"><span>' + name + '</span><span>' + data.sections[s] + '</span></div><div class="an-bar"><div class="an-bar-fill" style="width:' + pct + '%"></div></div></div>';
+      }
+
+      // Clicks
+      html += '<h4>Kliknutí</h4>';
+      var hasClicks = false;
+      for (var c in data.clicks) {
+        hasClicks = true;
+        var cname = clickNames[c] || c;
+        html += '<div class="an-bar-wrap"><div class="an-bar-label"><span>' + cname + '</span><span>' + data.clicks[c] + '</span></div></div>';
+      }
+      if (!hasClicks) html += '<p style="font-size:.85rem;color:#888;">Zatím žádná kliknutí.</p>';
+
+      // Referrers
+      html += '<h4>Zdroje návštěv</h4>';
+      if (topRefs.length) {
+        html += '<table class="an-table"><thead><tr><th>Doména</th><th>Návštěvy</th></tr></thead><tbody>';
+        topRefs.forEach(function (r) { html += '<tr><td>' + r + '</td><td>' + refs[r] + '</td></tr>'; });
+        html += '</tbody></table>';
+      } else { html += '<p style="font-size:.85rem;color:#888;">Většina návštěv je přímých.</p>'; }
+
+      // Recent visits
+      html += '<h4>Posledních 20 návštěv</h4>';
+      var recent = data.visits.slice(-20).reverse();
+      html += '<table class="an-table"><thead><tr><th>Čas</th><th>Zařízení</th><th>Prohlížeč</th><th>Zdroj</th></tr></thead><tbody>';
+      recent.forEach(function (v) {
+        var date = new Date(v.t * 1000);
+        var timeStr = date.getDate() + '.' + (date.getMonth() + 1) + '. ' + String(date.getHours()).padStart(2, '0') + ':' + String(date.getMinutes()).padStart(2, '0');
+        html += '<tr><td>' + timeStr + '</td><td>' + (v.d === 'm' ? 'Mobil' : 'Desktop') + '</td><td>' + (v.b || '—') + '</td><td>' + (v.r || 'přímý') + '</td></tr>';
+      });
+      html += '</tbody></table>';
+
+      // Actions
+      html += '<div class="an-actions">';
+      html += '<button id="anExport">Export JSON</button>';
+      html += '<button id="anClear">Vymazat data</button>';
+      html += '</div>';
+
+      // Change password
+      html += '<div class="an-pw-section">';
+      html += '<h4 style="margin-top:0;">Změnit heslo</h4>';
+      html += '<input type="password" id="anNewPw" placeholder="Nové heslo">';
+      html += '<button id="anChangePw" style="padding:.4rem .8rem;border-radius:6px;font-size:.8rem;cursor:pointer;border:1px solid #ddd;background:#f5f5f6;font-family:var(--font-body);">Změnit heslo</button>';
+      html += '<p class="an-msg" id="anPwMsg" style="display:none;"></p>';
+      html += '</div>';
+
+      content.innerHTML = html;
+
+      // Actions handlers
+      document.getElementById('anExport').addEventListener('click', function () {
+        var blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url; a.download = 'kl-analytics.json'; a.click();
+        URL.revokeObjectURL(url);
+      });
+
+      document.getElementById('anClear').addEventListener('click', function () {
+        if (confirm('Opravdu vymazat všechna analytická data?')) {
+          localStorage.removeItem(AN_KEY);
+          showDashboard();
+        }
+      });
+
+      document.getElementById('anChangePw').addEventListener('click', function () {
+        var newPw = document.getElementById('anNewPw').value.trim();
+        var msg = document.getElementById('anPwMsg');
+        if (newPw.length < 3) { msg.textContent = 'Heslo musí mít alespoň 3 znaky.'; msg.style.display = 'block'; return; }
+        localStorage.setItem(AN_PW_KEY, newPw);
+        document.getElementById('anNewPw').value = '';
+        msg.textContent = 'Heslo bylo změněno.'; msg.style.display = 'block';
+        setTimeout(function () { msg.style.display = 'none'; }, 3000);
+      });
+    }
+
+    function card(val, label) {
+      return '<div class="an-card"><div class="an-val">' + val + '</div><div class="an-lbl">' + label + '</div></div>';
+    }
+  })();
 
   /* ---------- Lazy load iframes ---------- */
   var iframeObserver = new IntersectionObserver(function (entries) {
