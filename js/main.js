@@ -39,7 +39,12 @@
     if (slides.length < 2) return;
     var current = 0;
     setInterval(function () {
-      slides[current].classList.remove('active');
+      var prev = slides[current];
+      // Freeze current zoom so it doesn't snap back during fade-out
+      prev.style.transform = getComputedStyle(prev).transform;
+      prev.classList.remove('active');
+      // Clear inline transform after fade-out completes
+      setTimeout(function () { prev.style.transform = ''; }, 1600);
       // Brief black gap before next slide
       setTimeout(function () {
         current = (current + 1) % slides.length;
