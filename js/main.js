@@ -529,6 +529,37 @@
     }
   });
 
+  /* ---------- Client logos carousel (JS-driven) ---------- */
+  (function () {
+    var track = document.querySelector('.clients-track');
+    if (!track) return;
+
+    var items = track.children;
+    var halfCount = items.length / 2;
+    var gap = parseFloat(getComputedStyle(track).gap) || 80;
+
+    // Measure width of first set (original logos + gaps)
+    var firstSetWidth = 0;
+    for (var i = 0; i < halfCount; i++) {
+      firstSetWidth += items[i].offsetWidth;
+    }
+    firstSetWidth += halfCount * gap;
+
+    var speed = firstSetWidth / (30 * 60); // match ~30s full cycle at 60fps
+    var pos = 0;
+
+    function animate() {
+      pos -= speed;
+      if (Math.abs(pos) >= firstSetWidth) {
+        pos += firstSetWidth;
+      }
+      track.style.transform = 'translate3d(' + pos + 'px, 0, 0)';
+      requestAnimationFrame(animate);
+    }
+
+    requestAnimationFrame(animate);
+  })();
+
   /* ---------- Smooth scroll for anchor links ---------- */
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {
     link.addEventListener('click', function (e) {

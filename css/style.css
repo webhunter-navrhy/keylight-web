@@ -799,25 +799,19 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
   display: flex;
   align-items: center;
   gap: 5rem;
-  animation: scrollLogos 30s linear infinite;
   width: max-content;
   will-change: transform;
 }
 
-@keyframes scrollLogos {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-50%, 0, 0); }
-}
-
-
 .clients-track img {
   height: 40px;
   opacity: .7;
-  transition: opacity .3s;
   flex-shrink: 0;
 }
 
-.clients-track img:hover { opacity: 1; }
+.clients-track .logo-on-dark img {
+  height: 30px;
+}
 
 .clients-track .logo-on-dark {
   background: var(--black);
