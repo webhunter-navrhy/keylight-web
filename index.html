@@ -15,9 +15,11 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://klight.cz">
   <meta property="og:image" content="images/hero/poster.jpg">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
   <link rel="preload" href="fonts/ScaleVF.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/Manrope-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="images/fotogalerie/hlavni-1.webp" as="image" type="image/webp">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.min.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -35,14 +37,6 @@
       "https://youtube.com/@KEYLIGHT_CZ"
     ]
   }
-  </script>
-  <!-- Google Analytics 4 (consent mode) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NMF84E1EK"></script>
-  <script>
-    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-    gtag('consent','default',{analytics_storage:'denied'});
-    gtag('js',new Date());
-    gtag('config','G-0NMF84E1EK');
   </script>
 </head>
 <body>
@@ -76,10 +70,10 @@
   <!-- ====== HERO ====== -->
   <section class="hero" id="hero">
     <div class="hero-bg">
-      <img src="images/fotogalerie/hlavni-1.webp" alt="" class="hero-slide active" fetchpriority="high">
-      <img src="images/fotogalerie/hlavni-2.webp" alt="" class="hero-slide" loading="lazy">
-      <img src="images/fotogalerie/hlavni-3.webp" alt="" class="hero-slide" loading="lazy">
-      <img src="images/fotogalerie/hlavni-4.webp" alt="" class="hero-slide" loading="lazy">
+      <img src="images/fotogalerie/hlavni-1.webp" alt="" class="hero-slide active" fetchpriority="high" width="1200" height="800">
+      <img src="images/fotogalerie/hlavni-2.webp" alt="" class="hero-slide" loading="lazy" width="1200" height="800">
+      <img src="images/fotogalerie/hlavni-3.webp" alt="" class="hero-slide" loading="lazy" width="1200" height="800">
+      <img src="images/fotogalerie/hlavni-4.webp" alt="" class="hero-slide" loading="lazy" width="1200" height="800">
     </div>
     <div class="hero-content">
       <img src="images/logo/logo-white.png" alt="KEYLIGHT" class="hero-logo">
@@ -101,9 +95,9 @@
           <p><strong>Spolupráci se značkami vnímáme jako dlouhodobé partnerství. Chceme růst společně s firmami, které věří v kvalitní obsah stejně jako my, a vytvářet projekty, které mají hodnotu pro diváky i pro značky.</strong></p>
         </div>
         <div class="relight-wrapper" id="relightWrapper">
-          <img src="images/relight/source.webp" alt="Tým KEYLIGHT na scéně" class="relight-dark">
-          <img src="images/relight/source.webp" alt="Key light — nasvícení lidí" class="relight-key" id="relightKey">
-          <img src="images/relight/source.webp" alt="Back light — nasvícení pozadí" class="relight-back" id="relightBack">
+          <img src="images/relight/source.webp" alt="Tým KEYLIGHT na scéně" class="relight-dark" loading="lazy">
+          <img src="images/relight/source.webp" alt="Key light — nasvícení lidí" class="relight-key" id="relightKey" loading="lazy">
+          <img src="images/relight/source.webp" alt="Back light — nasvícení pozadí" class="relight-back" id="relightBack" loading="lazy">
           <div class="relight-controls">
             <div class="relight-faders">
               <div class="relight-fader">
@@ -520,6 +514,8 @@
     </div>
   </div>
 
-  <script src="js/main.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NMF84E1EK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{analytics_storage:'denied'});gtag('js',new Date());gtag('config','G-0NMF84E1EK');</script>
+  <script src="js/main.min.js" defer></script>
 </body>
 </html>
