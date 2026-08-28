@@ -8,17 +8,16 @@
 /* --- Fonts --- */
 @font-face {
   font-family: 'ScaleVF';
-  src: url('../fonts/ScaleVF.otf') format('opentype');
+  src: url('../fonts/ScaleVF.woff2') format('woff2'), url('../fonts/ScaleVF.otf') format('opentype');
   font-weight: 100 900;
   font-display: swap;
 }
 
-@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Regular.ttf') format('truetype'); font-weight: 400; font-display: swap; }
-@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Medium.ttf') format('truetype'); font-weight: 500; font-display: swap; }
-@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-SemiBold.ttf') format('truetype'); font-weight: 600; font-display: swap; }
-@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Bold.ttf') format('truetype'); font-weight: 700; font-display: swap; }
-@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-ExtraBold.ttf') format('truetype'); font-weight: 800; font-display: swap; }
-@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Light.ttf') format('truetype'); font-weight: 300; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Regular.woff2') format('woff2'), url('../fonts/Manrope-Regular.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Medium.woff2') format('woff2'), url('../fonts/Manrope-Medium.ttf') format('truetype'); font-weight: 500; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-SemiBold.woff2') format('woff2'), url('../fonts/Manrope-SemiBold.ttf') format('truetype'); font-weight: 600; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Bold.woff2') format('woff2'), url('../fonts/Manrope-Bold.ttf') format('truetype'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-ExtraBold.woff2') format('woff2'), url('../fonts/Manrope-ExtraBold.ttf') format('truetype'); font-weight: 800; font-display: swap; }
 
 /* --- Reset & Base --- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }

@@ -15,6 +15,8 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://klight.cz">
   <meta property="og:image" content="images/hero/poster.jpg">
+  <link rel="preload" href="fonts/ScaleVF.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="images/fotogalerie/hlavni-1.webp" as="image" type="image/webp">
   <link rel="stylesheet" href="css/style.css">
   <script type="application/ld+json">
   {
@@ -74,10 +76,10 @@
   <!-- ====== HERO ====== -->
   <section class="hero" id="hero">
     <div class="hero-bg">
-      <img src="images/fotogalerie/hlavni-1.jpg" alt="" class="hero-slide active">
-      <img src="images/fotogalerie/hlavni-2.jpg" alt="" class="hero-slide">
-      <img src="images/fotogalerie/hlavni-3.jpg" alt="" class="hero-slide">
-      <img src="images/fotogalerie/hlavni-4.jpg" alt="" class="hero-slide">
+      <img src="images/fotogalerie/hlavni-1.webp" alt="" class="hero-slide active" fetchpriority="high">
+      <img src="images/fotogalerie/hlavni-2.webp" alt="" class="hero-slide" loading="lazy">
+      <img src="images/fotogalerie/hlavni-3.webp" alt="" class="hero-slide" loading="lazy">
+      <img src="images/fotogalerie/hlavni-4.webp" alt="" class="hero-slide" loading="lazy">
     </div>
     <div class="hero-content">
       <img src="images/logo/logo-white.png" alt="KEYLIGHT" class="hero-logo">
@@ -99,9 +101,9 @@
           <p><strong>Spolupráci se značkami vnímáme jako dlouhodobé partnerství. Chceme růst společně s firmami, které věří v kvalitní obsah stejně jako my, a vytvářet projekty, které mají hodnotu pro diváky i pro značky.</strong></p>
         </div>
         <div class="relight-wrapper" id="relightWrapper">
-          <img src="images/relight/source.jpg" alt="Tým KEYLIGHT na scéně" class="relight-dark">
-          <img src="images/relight/source.jpg" alt="Key light — nasvícení lidí" class="relight-key" id="relightKey">
-          <img src="images/relight/source.jpg" alt="Back light — nasvícení pozadí" class="relight-back" id="relightBack">
+          <img src="images/relight/source.webp" alt="Tým KEYLIGHT na scéně" class="relight-dark">
+          <img src="images/relight/source.webp" alt="Key light — nasvícení lidí" class="relight-key" id="relightKey">
+          <img src="images/relight/source.webp" alt="Back light — nasvícení pozadí" class="relight-back" id="relightBack">
           <div class="relight-controls">
             <div class="relight-faders">
               <div class="relight-fader">
@@ -211,7 +213,7 @@
       <div class="shows-grid reveal">
         <a href="#detail-o-vsechno" class="show-card">
           <div class="show-card-image">
-            <img src="images/fotogalerie/card-ovsechno.jpg" alt="O VŠECHNO" loading="lazy">
+            <img src="images/fotogalerie/card-ovsechno.webp" alt="O VŠECHNO" loading="lazy">
             <span class="show-badge">YouTube</span>
           </div>
           <div class="show-card-body">
@@ -222,7 +224,7 @@
         </a>
         <a href="#detail-mas-to-spocitany" class="show-card">
           <div class="show-card-image">
-            <img src="images/fotogalerie/card-mts.jpg" alt="MÁŠ TO SPOČÍTANÝ" loading="lazy">
+            <img src="images/fotogalerie/card-mts.webp" alt="MÁŠ TO SPOČÍTANÝ" loading="lazy">
             <span class="show-badge">YouTube</span>
           </div>
           <div class="show-card-body">
@@ -233,7 +235,7 @@
         </a>
         <a href="#detail-poulicni-standup" class="show-card">
           <div class="show-card-image">
-            <img src="images/fotogalerie/card-standup.jpg" alt="STAND-UP NA ULICI" loading="lazy">
+            <img src="images/fotogalerie/card-standup.webp" alt="STAND-UP NA ULICI" loading="lazy">
             <span class="show-badge">Shorts · Reels</span>
           </div>
           <div class="show-card-body">
@@ -268,17 +270,17 @@
         <div class="show-gallery-wrap">
           <button class="gallery-arrow gallery-arrow-left" aria-label="Předchozí">&#8249;</button>
           <div class="show-gallery">
-            <img src="images/fotogalerie/ov-1.jpg" alt="O Všechno — foto 1" loading="lazy">
-            <img src="images/fotogalerie/ov-2.jpg" alt="O Všechno — foto 2" loading="lazy">
-            <img src="images/fotogalerie/ov-3.jpg" alt="O Všechno — foto 3" loading="lazy">
-            <img src="images/fotogalerie/ov-4.jpg" alt="O Všechno — foto 4" loading="lazy">
-            <img src="images/fotogalerie/ov-5.jpg" alt="O Všechno — foto 5" loading="lazy">
-            <img src="images/fotogalerie/ov-6.jpg" alt="O Všechno — foto 6" loading="lazy">
-            <img src="images/fotogalerie/ov-7.jpg" alt="O Všechno — foto 7" loading="lazy">
-            <img src="images/fotogalerie/ov-8.jpg" alt="O Všechno — foto 8" loading="lazy">
-            <img src="images/fotogalerie/ov-9.jpg" alt="O Všechno — foto 9" loading="lazy">
-            <img src="images/fotogalerie/ov-10.jpg" alt="O Všechno — foto 10" loading="lazy">
-            <img src="images/fotogalerie/ov-11.jpg" alt="O Všechno — foto 11" loading="lazy">
+            <img src="images/fotogalerie/ov-1.webp" alt="O Všechno — foto 1" loading="lazy">
+            <img src="images/fotogalerie/ov-2.webp" alt="O Všechno — foto 2" loading="lazy">
+            <img src="images/fotogalerie/ov-3.webp" alt="O Všechno — foto 3" loading="lazy">
+            <img src="images/fotogalerie/ov-4.webp" alt="O Všechno — foto 4" loading="lazy">
+            <img src="images/fotogalerie/ov-5.webp" alt="O Všechno — foto 5" loading="lazy">
+            <img src="images/fotogalerie/ov-6.webp" alt="O Všechno — foto 6" loading="lazy">
+            <img src="images/fotogalerie/ov-7.webp" alt="O Všechno — foto 7" loading="lazy">
+            <img src="images/fotogalerie/ov-8.webp" alt="O Všechno — foto 8" loading="lazy">
+            <img src="images/fotogalerie/ov-9.webp" alt="O Všechno — foto 9" loading="lazy">
+            <img src="images/fotogalerie/ov-10.webp" alt="O Všechno — foto 10" loading="lazy">
+            <img src="images/fotogalerie/ov-11.webp" alt="O Všechno — foto 11" loading="lazy">
           </div>
           <button class="gallery-arrow gallery-arrow-right" aria-label="Další">&#8250;</button>
         </div>
@@ -301,12 +303,12 @@
         <div class="show-gallery-wrap">
           <button class="gallery-arrow gallery-arrow-left" aria-label="Předchozí">&#8249;</button>
           <div class="show-gallery">
-            <img src="images/fotogalerie/mts-1.jpg" alt="Máš to spočítaný — foto 1" loading="lazy">
-            <img src="images/fotogalerie/mts-2.jpg" alt="Máš to spočítaný — foto 2" loading="lazy">
-            <img src="images/fotogalerie/mts-3.jpg" alt="Máš to spočítaný — foto 3" loading="lazy">
-            <img src="images/fotogalerie/mts-4.jpg" alt="Máš to spočítaný — foto 4" loading="lazy">
-            <img src="images/fotogalerie/mts-5.jpg" alt="Máš to spočítaný — foto 5" loading="lazy">
-            <img src="images/fotogalerie/mts-6.jpg" alt="Máš to spočítaný — foto 6" loading="lazy">
+            <img src="images/fotogalerie/mts-1.webp" alt="Máš to spočítaný — foto 1" loading="lazy">
+            <img src="images/fotogalerie/mts-2.webp" alt="Máš to spočítaný — foto 2" loading="lazy">
+            <img src="images/fotogalerie/mts-3.webp" alt="Máš to spočítaný — foto 3" loading="lazy">
+            <img src="images/fotogalerie/mts-4.webp" alt="Máš to spočítaný — foto 4" loading="lazy">
+            <img src="images/fotogalerie/mts-5.webp" alt="Máš to spočítaný — foto 5" loading="lazy">
+            <img src="images/fotogalerie/mts-6.webp" alt="Máš to spočítaný — foto 6" loading="lazy">
           </div>
           <button class="gallery-arrow gallery-arrow-right" aria-label="Další">&#8250;</button>
         </div>
@@ -391,15 +393,15 @@
       </div>
       <div class="team-carousel reveal">
         <div class="team-track">
-          <img src="images/tym/tym-1.jpg" alt="Tým KEYLIGHT" loading="lazy">
-          <img src="images/tym/tym-2.jpg" alt="KEYLIGHT produkce" loading="lazy">
-          <img src="images/tym/tym-3.jpg" alt="KEYLIGHT zákulisí" loading="lazy">
-          <img src="images/tym/tym-4.jpg" alt="KEYLIGHT show" loading="lazy">
+          <img src="images/tym/tym-1.webp" alt="Tým KEYLIGHT" loading="lazy">
+          <img src="images/tym/tym-2.webp" alt="KEYLIGHT produkce" loading="lazy">
+          <img src="images/tym/tym-3.webp" alt="KEYLIGHT zákulisí" loading="lazy">
+          <img src="images/tym/tym-4.webp" alt="KEYLIGHT show" loading="lazy">
           <!-- Duplicate for seamless loop -->
-          <img src="images/tym/tym-1.jpg" alt="Tým KEYLIGHT" loading="lazy">
-          <img src="images/tym/tym-2.jpg" alt="KEYLIGHT produkce" loading="lazy">
-          <img src="images/tym/tym-3.jpg" alt="KEYLIGHT zákulisí" loading="lazy">
-          <img src="images/tym/tym-4.jpg" alt="KEYLIGHT show" loading="lazy">
+          <img src="images/tym/tym-1.webp" alt="Tým KEYLIGHT" loading="lazy">
+          <img src="images/tym/tym-2.webp" alt="KEYLIGHT produkce" loading="lazy">
+          <img src="images/tym/tym-3.webp" alt="KEYLIGHT zákulisí" loading="lazy">
+          <img src="images/tym/tym-4.webp" alt="KEYLIGHT show" loading="lazy">
         </div>
       </div>
     </div>
